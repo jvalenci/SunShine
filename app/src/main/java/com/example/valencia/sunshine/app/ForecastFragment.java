@@ -70,7 +70,8 @@ public class ForecastFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        String[] forecastArray ={"today is sunny","colder than a bitch",
+        String[] forecastArray ={
+                "today is sunny","colder than a bitch",
                 " today is not so bad its bareable",
                 " holy shit its hotter then a witches tity",
                 " today is gonna rain",
@@ -284,8 +285,14 @@ public class ForecastFragment extends Fragment {
         }
 
         @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+        protected void onPostExecute(String[] result) {
+            if(result != null){
+                mForecastAdapter.clear();
+                for(String dayForecastStr: result){
+                    mForecastAdapter.add(dayForecastStr);
+                }
+                //new data is back from the server
+            }
         }
     }
 
