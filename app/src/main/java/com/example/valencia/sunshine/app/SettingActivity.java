@@ -6,13 +6,9 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
-
 /**
  * Created by Valencia on 12/27/2014.
  */
-public class SettingActivity {
-
-
 
     /**
      * A {@link PreferenceActivity} that presents a set of application settings.
@@ -22,7 +18,7 @@ public class SettingActivity {
      * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
      * API Guide</a> for more information on developing a Settings UI.
      */
-    public class SettingsActivity extends PreferenceActivity
+    public class SettingActivity extends PreferenceActivity
             implements Preference.OnPreferenceChangeListener {
 
         @Override
@@ -75,4 +71,4 @@ public class SettingActivity {
     }
 
 
-}
+
