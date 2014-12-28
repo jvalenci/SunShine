@@ -30,7 +30,7 @@ import android.preference.PreferenceManager;
 
             // For all preferences, attach an OnPreferenceChangeListener so the UI summary can be
             // updated when the preference changes.
-            
+
             bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
         }
 
