@@ -30,9 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 /**
  * A forecast fragment containing a simple view.
@@ -72,17 +70,6 @@ public class ForecastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        String[] forecastArray ={
-                "today is sunny","colder than a bitch",
-                " today is not so bad its bareable",
-                " holy shit its hotter then a witches tity",
-                " today is gonna rain",
-                "raining side ways"
-        };
-
-        List<String> weekForecast = new ArrayList<String>(Arrays.asList(forecastArray));
 
         mForecastAdapter = new ArrayAdapter<String>(
                 //context
@@ -92,7 +79,9 @@ public class ForecastFragment extends Fragment {
                 //id of textview
                 R.id.list_item_forecast_textview,
                 //fake data to put in
-                weekForecast );
+                new ArrayList<String>() );
+
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         ListView listView = (ListView)rootView.findViewById(R.id.listview_forecast);
         listView.setAdapter(mForecastAdapter);
@@ -113,11 +102,12 @@ public class ForecastFragment extends Fragment {
         return rootView;
 
     }
+
     private void updateWeather(){
         FetchWeatherTask weatherTask = new FetchWeatherTask();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String location = prefs.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
-        weatherTask.execute(location + "USA");
+        weatherTask.execute(location + ", USA");
     }
 
     @Override
@@ -146,6 +136,22 @@ public class ForecastFragment extends Fragment {
          * Prepare the weather high/lows for presentation.
          */
         private String formatHighLows(double high, double low) {
+
+            SharedPreferences sharedPrefs =
+                    PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+            String unitType = (String)sharedPrefs.getString(
+                    getString(R.string.pref_units_key),
+                    getString(R.string.pref_units_metric));
+            if(unitType.equals(getString(R.string.pref_units_imperial))){
+                high = (high * 1.8 ) + 32;
+                low = (low * 1.8 ) + 32;
+            }else if (!unitType.equals(getString(R.string.pref_units_metric))){
+                Log.d(LOG_TAG, "Unit type not found" +unitType);
+            }
+
+
+
             // For presentation, assume the user doesn't care about tenths of a degree.
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);

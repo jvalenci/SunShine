@@ -11,5 +11,18 @@
     <string name="pref_location_key" translatable ="false" >Location</string>
     <string name="pref_location_label">Location</string>
     <string name="pref_location_default" translatable ="false" >33617</string>
+    <string name="pref_units_key" translatable = "false" >Units</string>
+    <string name="pref_units_label" >Temperature Units</string>
+    <string name="pref_units_metric" >metric</string>
+    <string name="pref_units_imperial" >imperial</string>
 
+    <string-array name="Temperature_values">
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
+
+    <string-array name="pref_units_options">
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
 </resources>
