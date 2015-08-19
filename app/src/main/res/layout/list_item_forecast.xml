@@ -13,7 +13,7 @@
             android:id="@+id/list_item_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher"
+
         />
 
         <LinearLayout
@@ -27,13 +27,13 @@
                 android:id="@+id/list_item_date_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TOMORROW"/>
+                />
 
             <TextView
                 android:id="@+id/list_item_forecast_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CLEAR"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -45,13 +45,13 @@
                 android:id="@+id/list_item_high_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="55deg"/>
+                />
 
             <TextView
                 android:id="@+id/list_item_low_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6deg"/>
+                />
         </LinearLayout>
 
 </LinearLayout>
