@@ -2,6 +2,7 @@ package com.example.valencia.sunshine.app;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,12 +75,13 @@ public class ForecastAdapter extends CursorAdapter{
                 /*
         This is where we fill-in the views with the contents of the cursor.
      */
-                @Override
+        @Override
         public void bindView(View view, Context context, Cursor cursor) {
                 // our view is pretty simple here --- just a text view
                         // we'll keep the UI functional with a simple (and slow!) binding.
 
                     ViewHolder viewHolder = (ViewHolder) view.getTag();
+
 //
 //
                     //use place holder image for now
@@ -105,7 +107,7 @@ public class ForecastAdapter extends CursorAdapter{
 
                     //read low temperature from cursor
                     double low = cursor.getDouble(ForecastFragment.COL_WEATHER_MIN_TEMP);
-                    
+
                     viewHolder.lowTempView.setText(Utility.formatTemperature(low, isMetric));
 
         }
