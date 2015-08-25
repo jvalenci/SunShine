@@ -2,7 +2,6 @@ package com.example.valencia.sunshine.app;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,7 @@ public class ForecastAdapter extends CursorAdapter{
             descriptionView = (TextView) view.findViewById(R.id.list_item_forecast_textview);
             highTempView = (TextView) view.findViewById(R.id.list_item_high_textview);
             lowTempView = (TextView) view.findViewById(R.id.list_item_low_textview);
+
         }
     }
     public ForecastAdapter(Context context, Cursor c, int flags){
@@ -65,7 +65,7 @@ public class ForecastAdapter extends CursorAdapter{
                         layoutId = R.layout.list_item_forecast;
                     }
 
-                    View view = LayoutInflater.from(context).inflate(layoutId,parent,false);
+                    View view = LayoutInflater.from(parent.getContext()).inflate(layoutId,parent,false);
                     ViewHolder viewHolder = new ViewHolder(view);
                     view.setTag(viewHolder);
 
